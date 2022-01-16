@@ -1,0 +1,61 @@
+<h1>Formulário</h1>
+
+<!-- Recebimento de dados para o backend -->
+
+<!--<form action="http://localhost:3003/usuarios" method="POST">  isso foi até a aula 2, agora vamos colocar botão alterar-->
+<form method="POST">
+    <input type="hidden" name="id" value="3"> <!-- (aula 3) carrega dados escondidos-->
+    <input type="text" name="nome"><!-- Pra colocar um texto que vai receber em "nome"-->
+    <input type="password" name="senha"><!-- Pede senha -->
+    <textarea name="bio" id="" cols="30" rows="10"></textarea> <!-- Área de texto-->
+    <div> <!-- Tipos de logins -->
+        <input type="radio" name="admin"> Admin
+        <input type="radio" name="regular"> Regular
+        <input type="radio" name="professor"> Professor
+    </div>
+    <div> <!-- Status da pessoa -->
+        <input type="checkbox" name="ativo">Ativo
+    </div>
+    
+    <select name="estado"> <!-- selecionar estado -->
+        <option value="">Selecione</option>
+        <option value="mg">Minas Gerais</option> <!-- o que vai aparecer é o valor-->
+        <option value="ba">Bahia</option>
+        <option value="sp">São Paulo</option>
+    </select>
+
+    <select name="interesses"multiple size = "3"> <!-- multiple size : quantos vai aparecer na mini lista-->
+        <option value="js">Javascript</option>
+        <option value="java">Java</option>
+        <option value="php">PHP</option>
+        <option value="python">Python</option>
+        <option value="go">Go</option>
+        <option value="c">C</option>
+    </select>
+
+    <button formaction="http://localhost:3003/usuarios">Incluir</button> <!-- botão incluir -->
+    <button formaction="http://localhost:3003/usuarios/3">Alterar</button> <!-- botão alterar -->
+</form>
+
+<!-- Aplicando estilo -->
+<style>
+    input, textarea, select { 
+        display: block; /* Tipo bloco */
+        margin-bottom: 10px; /* Distanciamento das linhas de 10px*/
+    }
+
+    input[type=radio], /* Radio e ativo vão se comportar dessa maneira: */
+    input[type=checkbox] {
+        display:inline; /* O display vai ficar na mesma linha do texto*/ 
+    } 
+</style>
+
+<!-- 
+    Comandos feitos nessa aula no terminal
+        *cd html
+        *cd exercicios
+        *cd formulario
+        *npm init -y -> criando o packge.json
+        *npm i --save express@4.16.3 body-parser@1.18.2 -E -> mantendo a mesma versão que o professor
+        *node server.js -> fica escutando na porta 3003 as respostas 
+-->

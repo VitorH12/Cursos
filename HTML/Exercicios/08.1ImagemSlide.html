@@ -1,0 +1,130 @@
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade" 
+        width="513" height="342"
+        title="Muro da Cidade por Tarso Bessa"
+        >
+        <!--alt: caso não apareça a imagem, vai aparecer isso
+        também é importante para deficientes visuais
+        title: passa o mouse em cima e verá o título -->
+    </p>
+
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+        alt="Intro Cod3r"
+        height="342"
+        title="Intro Cod3r"
+        >
+    </p>
+
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+        alt="Rio de Janeiro"
+        height="342"
+        >
+    </p>
+
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+        alt="Avatar"
+        height="50"
+        style="float: left" 
+        >
+        <!-- float: left -> imagem fica a esquerda -->
+        Texo qualquer maluco uehsuheushesesuheushes
+        eshesuehuse eus hueshu hesuh uehsuh uesue hsuhe usuehsuheus 
+        e usheuh suheushuehsu heushue hsuhe usuheushue hsuhe ushue hsue
+        ehushueshue shue hsuhe ushuheushue shu hu eshu hesuh uehsuh uesue 
+        hsuhe usuehsuheus auahduawhuhdiauw hdawu hiudhwaui hudiahw 
+        e usheuh suheushuehsu heushue hsuhe usuheushue hsuhe ushue hsue
+        ehushueshue shue hsuhe ushuheushue shu hu 
+    </p>
+
+    <p class="cidade"></p>
+
+    <p>
+        <picture> <!-- essa tag permite colocar várias fontes e critérios para exibilas-->
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width:600px)"
+            > <!-- se a media for menor que 600px exibe a logo larga, se não a estreita-->
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png"> 
+
+        </picture>
+    </p>
+</div>
+
+<style>
+    p {
+        /* Deixa todas imagens no mesmo plano, e o none é pra retirar a imagem da visualização*/ 
+        position: absolute;
+        display: none;
+    }
+
+    .circular {
+        /*Faz um círculo na imagem com fundo cinza (se tirar o fundo fica transparente)*/
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px; /*Largura do texto*/
+    }
+
+    .texto img {
+        margin-right: 10px; /*Espaço de 10px na direita da imagem*/
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url(http://files.cod3r.com.br/curso-web/imagem4.jpg);
+        background-position: center; /*Imagem centralizada*/
+        background-repeat: no-repeat; /*Imagem não vai repetir, pq dependendo do tamanho ela repete*/
+        background-size: 200%; /*zoom*/
+    }
+
+</style>
+
+<!-- slide -->
+<script>
+/*função mover recebe elemento, posição de inicio, posição de fim */
+    function mover(elem, inicio, fim, passo, callback) {
+                            /*passo(vai mover de quanto ate quanto) e callback
+                            que é pra quando acabar o movimento, ele vai chamar essa função, para notificar quando acabou o movimento*/
+        const novoInicio = inicio - passo
+            if (novoInicio >= fim) { /* Isso é para continuar movendo a imagem, quando chegar no fim, a imagem tem que parar */
+                elem.style.left = novoInicio + 'px'
+                setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+                /*função timeout que será executada em 7 em 7 milisegundo */
+            } else {
+                callback()
+            }
+    }
+
+    function slider() {
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elementos) /* Transformando em Array */
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide) {
+        slide.style.display ='block' /* agora vai aparecer as imagens*/
+        const inicio = innerWidth /*(vai te dar a largura da página)*/
+        const fim = -slide.clientWidth /*Largura do cliente*/
+
+        slide.style.left = `${inicio}px`
+
+        mover(slide, inicio, fim, 5, () => {
+            slide.style.display = 'none'
+            exibirSlide(slides,getProximo(slides, slide))
+        })
+    }
+
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0]
+    }
+
+    slider();
+</script>

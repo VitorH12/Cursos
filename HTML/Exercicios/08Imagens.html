@@ -1,0 +1,79 @@
+<p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+    alt="Muro da Cidade" 
+    width="513" height="342"
+    title="Muro da Cidade por Tarso Bessa"
+    >
+    <!--alt: caso não apareça a imagem, vai aparecer isso
+    também é importante para deficientes visuais
+    title: passa o mouse em cima e verá o título -->
+</p>
+
+<p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+    alt="Intro Cod3r"
+    height="342"
+    title="Intro Cod3r"
+    >
+</p>
+
+<p class="circular">
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+    alt="Rio de Janeiro"
+    height="342"
+    >
+</p>
+
+<p class="texto">
+    <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+    alt="Avatar"
+    height="50"
+    style="float: left" 
+    >
+    <!-- float: left -> imagem fica a esquerda -->
+    Texo qualquer maluco uehsuheushesesuheushes
+    eshesuehuse eus hueshu hesuh uehsuh uesue hsuhe usuehsuheus 
+    e usheuh suheushuehsu heushue hsuhe usuheushue hsuhe ushue hsue
+    ehushueshue shue hsuhe ushuheushue shu hu eshu hesuh uehsuh uesue 
+    hsuhe usuehsuheus auahduawhuhdiauw hdawu hiudhwaui hudiahw 
+    e usheuh suheushuehsu heushue hsuhe usuheushue hsuhe ushue hsue
+    ehushueshue shue hsuhe ushuheushue shu hu 
+</p>
+
+<p class="cidade"></p>
+
+<p>
+    <picture> <!-- essa tag permite colocar várias fontes e critérios para exibilas-->
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width:600px)"
+        > <!-- se a media for menor que 600px exibe a logo larga, se não a estreita-->
+        <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png"> 
+
+    </picture>
+</p>
+
+<style>
+    .circular {
+        /*Faz um círculo na imagem com fundo cinza (se tirar o fundo fica transparente)*/
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px; /*Largura do texto*/
+    }
+
+    .texto img {
+        margin-right: 10px; /*Espaço de 10px na direita da imagem*/
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url(http://files.cod3r.com.br/curso-web/imagem4.jpg);
+        background-position: center; /*Imagem centralizada*/
+        background-repeat: no-repeat; /*Imagem não vai repetir, pq dependendo do tamanho ela repete*/
+        background-size: 200%; /*zoom*/
+    }
+
+</style>
